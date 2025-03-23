@@ -22,7 +22,7 @@ function NavBar() {
       
       try {
         const { data } = await axios.post(
-          "http://localhost:8080",
+          "https://stocker-1-backend.onrender.com",
           {},
           { withCredentials: true }
         );
