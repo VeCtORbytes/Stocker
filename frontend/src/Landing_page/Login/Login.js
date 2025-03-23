@@ -42,7 +42,7 @@ const Login = () => {
       if (success) {
         handleSuccess(message);
         setTimeout(() => {
-          navigate("/");
+          navigate("https://stocker-1-dashboard1.onrender.com");
         }, 1000);
       } else {
         handleError(message);
