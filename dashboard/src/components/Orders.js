@@ -1,21 +1,11 @@
-import React ,{useState, useEffect} from "react";
+import React  from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+
 
 
 
 
 const Orders = () => {
-
-  const [allOrders, setAllOrders] = useState([]);
-
-  useEffect(() => {
-    axios.get("https://stocker-1-backend.onrender.com/allOrders").then((res) => {
-      // console.log(res.data);
-      setAllOrders(res.data);
-    });
-  })
-
   return (
     <div className="orders">
 
