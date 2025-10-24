@@ -1,15 +1,30 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+<<<<<<< HEAD
+import API from "../../API/axios"; // ✅ Import centralized API
+import { ToastContainer, toast } from "react-toastify";
+import { useAuth } from "../../context/AuthContext";
+
+const Login = () => {
+  const navigate = useNavigate();
+   const { login } = useAuth();
+
+=======
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 
 const Login = () => {
   const navigate = useNavigate();
+>>>>>>> origin/master
   const [inputValue, setInputValue] = useState({
     email: "",
     password: "",
   });
   const { email, password } = inputValue;
+<<<<<<< HEAD
+  
+=======
+>>>>>>> origin/master
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     setInputValue({
@@ -22,6 +37,10 @@ const Login = () => {
     toast.error(err, {
       position: "bottom-left",
     });
+<<<<<<< HEAD
+    
+=======
+>>>>>>> origin/master
   const handleSuccess = (msg) =>
     toast.success(msg, {
       position: "bottom-left",
@@ -30,6 +49,23 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+<<<<<<< HEAD
+      // ✅ Use centralized API (withCredentials already set)
+      const { data } = await API.post("/login", {
+        email,
+        password,
+      });
+      
+      console.log(data);
+      const { success, message, user} = data;
+      
+      if (success) {
+        handleSuccess(message);
+         login(user);
+        setTimeout(() => {
+          navigate("/");
+          window.location.reload(); 
+=======
       const { data } = await axios.post(
         "https://stocker-1-backend.onrender.com/login",
         {
@@ -43,15 +79,23 @@ const Login = () => {
         handleSuccess(message);
         setTimeout(() => {
           navigate("https://stocker-1-dashboard1.onrender.com");
+>>>>>>> origin/master
         }, 1000);
       } else {
         handleError(message);
       }
     } catch (error) {
       console.log(error);
+<<<<<<< HEAD
+      handleError("Login failed. Please try again.");
+    }
+    
+    setInputValue({
+=======
     }
     setInputValue({
       ...inputValue,
+>>>>>>> origin/master
       email: "",
       password: "",
     });
