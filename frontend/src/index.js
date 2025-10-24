@@ -13,10 +13,14 @@ import SupportPage from './Landing_page/Support/SupportPage';
 import NotFound from './Landing_page/NotFound';
 import NavBar from './Landing_page/NavBar';
 import Footer from './Landing_page/Footer';
+<<<<<<< HEAD
 import 'react-toastify/ReactToastify.css';
 import {AuthProvider} from './context/AuthContext';
 
 
+=======
+import 'react-toastify/ReactToastify.css'
+>>>>>>> origin/master
 
 
 
@@ -25,9 +29,12 @@ root.render(
     <CookiesProvider>
          <BrowserRouter>
  <NavBar/>
+<<<<<<< HEAD
  <AuthProvider>
     <App />
  </AuthProvider>
+=======
+>>>>>>> origin/master
  <Routes>
   <Route path="/" element={<HomePage />} />
   <Route path="/login" element={<Login />} />

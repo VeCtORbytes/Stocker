@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Stocker - Full-Stack Trading Platform
 
 **Stocker** is a full-stack trading platform inspired by Zerodha. It allows users to view real-time stock data, authenticate securely, and simulate transactions. The project is divided into three main parts: backend, frontend, and admin dashboard.
@@ -38,3 +39,6 @@
 ```bash
 git clone https://github.com/VeCtORbytes/Stocker.git
 cd Stocker
+=======
+# Zerodha-clone
+>>>>>>> origin/master

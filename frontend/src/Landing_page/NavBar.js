@@ -2,22 +2,50 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+<<<<<<< HEAD
 import API from "../API/axios"; // ✅ Use centralized API
 
 function NavBar() {
   const navigate = useNavigate();
+=======
+import { useCookies } from "react-cookie";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+
+function NavBar() {
+  const navigate = useNavigate();
+  const [cookies, setCookie, removeCookie] = useCookies(["token"]);
+>>>>>>> origin/master
   const [username, setUsername] = useState("");
   const [showWelcome, setShowWelcome] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     const verifyCookie = async () => {
+<<<<<<< HEAD
       try {
         const { data } = await API.post("/"); // ✅ Use API instance with withCredentials
         const { status, user } = data;
         
         if (status) {
           setUsername(user.username || user); // ✅ Handle both formats
+=======
+      if (!cookies.token) {
+        setIsLoggedIn(false);
+        return;
+      }
+      
+      try {
+        const { data } = await axios.post(
+          "https://stocker-1-backend.onrender.com",
+          {},
+          { withCredentials: true }
+        );
+        const { status, user } = data;
+        
+        if (status) {
+          setUsername(user);
+>>>>>>> origin/master
           setIsLoggedIn(true);
           setShowWelcome(true);
           setTimeout(() => {
@@ -25,6 +53,10 @@ function NavBar() {
           }, 3000);
         } else {
           setIsLoggedIn(false);
+<<<<<<< HEAD
+=======
+          removeCookie("token");
+>>>>>>> origin/master
         }
       } catch (error) {
         console.error("Error verifying cookie:", error);
@@ -33,6 +65,7 @@ function NavBar() {
     };
     
     verifyCookie();
+<<<<<<< HEAD
   }, []); // ✅ Run once on mount
 
   const Logout = async () => {
@@ -48,6 +81,15 @@ function NavBar() {
       setUsername("");
       navigate("/login");
     }
+=======
+  }, [cookies.token, removeCookie]); // Only depend on the token, not the entire cookies object
+
+  const Logout = () => {
+    removeCookie("token");
+    setIsLoggedIn(false);
+    setUsername("");
+    navigate("/login");
+>>>>>>> origin/master
   };
 
   return (
@@ -127,11 +169,16 @@ function NavBar() {
                         data-bs-toggle="dropdown"
                         aria-expanded="false"
                       >
+<<<<<<< HEAD
                         <i className="fa-solid fa-user"></i>
+=======
+                        <i class="fa-solid fa-user"></i>
+>>>>>>> origin/master
                       </button>
                       <ul className="dropdown-menu dropdown-menu">
                         <li>
                           <div className="ml-5">
+<<<<<<< HEAD
                             <button 
                               style={{border:"none", textAlign:'center'}} 
                               onClick={Logout}
@@ -139,6 +186,11 @@ function NavBar() {
                               Logout
                             </button>
                           </div>
+=======
+                          <button style={{border:"none", textAlign:'center', marginLeft:''}} onClick={Logout}>Logout</button>
+                          </div>
+                         
+>>>>>>> origin/master
                         </li>
                       </ul>
                     </li>
